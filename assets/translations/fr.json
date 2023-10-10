@@ -1,0 +1,26 @@
+{
+  "FollowingPlural": {
+    "zero": "Following",
+    "one": "Following",
+    "two": "Following",
+    "other": "Following"
+  },
+  "FollowersPlural": {
+    "zero": "Followers",
+    "one": "Follower",
+    "two": "Followers",
+    "other": "Followers"
+  },
+  "LikesPlural": {
+    "zero": "Likes",
+    "one": "Like",
+    "two": "Likes",
+    "other": "Likes"
+  },
+  "CommentsPlural": {
+    "zero": "Comments",
+    "one": "Comment",
+    "two": "Comments",
+    "other": "Comments"
+  }
+}

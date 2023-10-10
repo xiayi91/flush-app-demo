@@ -1,0 +1,69 @@
+# macOS system files
+.DS_Store
+
+# Flutter build directory
+/build/
+
+# Flutter generated files
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+packages/
+
+# Android build directory
+/android/app/build/
+
+# iOS build directory
+/ios/Pods/
+/ios/.symlinks/
+/ios/Flutter/.last_build_id
+
+# Xcode configuration file
+/ios/Flutter/Generated.xcconfig
+
+# Android Gradle files
+/android/.gradle/
+
+# IntelliJ IDEA
+.idea/
+
+# Visual Studio Code
+.vscode/
+
+# Android Studio
+.iml
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/libraries
+.idea/caches
+.idea/modules.xml
+.idea/misc.xml
+.idea/vcs.xml
+
+# Android Studio / VS Code project-specific files
+*.iml
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/.name
+.idea/caches
+.idea/libraries
+.idea/modules.xml
+.idea/vcs.xml
+*.code-workspace
+
+# Flutter IntelliJ IDEA plugin
+.idea/dictionaries
+
+# Flutter settings file
+.idea/flutter_settings
+
+# Android Studio generated files
+.idea/.generated/
+
+# Android Studio/Flutter plugin config
+.idea/compositeBuildConfig.xml
+
+# Dart dev tools
+.devtools/
