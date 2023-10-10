@@ -1,11 +1,13 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:instaflutter/core/common/favorite_bath.dart';
 import 'package:instaflutter/core/model/user.dart';
 import 'package:instaflutter/listings/listings_app_config.dart';
 
 class ListingsUser extends User {
   bool isAdmin;
+  FavoriteBath favoriteBath;
 
   List<String> likedListingsIDs;
 
@@ -22,6 +24,7 @@ class ListingsUser extends User {
     pushToken = '',
     this.isAdmin = false,
     this.likedListingsIDs = const [],
+    this.favoriteBath = FavoriteBath.option1, //get default val
   }) : super(
           firstName: firstName,
           lastName: lastName,
@@ -57,6 +60,7 @@ class ListingsUser extends User {
       isAdmin: parsedJson['isAdmin'] ?? false,
       likedListingsIDs:
           List<String>.from(parsedJson['likedListingsIDs'] ?? const []),
+      favoriteBath: parsedJson['favoriteBath'] ?? '',
     );
   }
 
@@ -76,6 +80,7 @@ class ListingsUser extends User {
       'pushToken': pushToken,
       'isAdmin': isAdmin,
       'likedListingsIDs': likedListingsIDs,
+      'favoriteBath': favoriteBath,
     };
   }
 }

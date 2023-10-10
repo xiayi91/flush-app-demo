@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
+import 'package:instaflutter/core/common/favorite_bath.dart';
 import 'package:instaflutter/listings/listings_app_config.dart';
 import 'package:instaflutter/listings/model/listings_user.dart';
 import 'package:instaflutter/listings/ui/auth/api/authentication_repository.dart';
@@ -48,8 +49,17 @@ class AuthenticationBloc
       } else if (result != null && result is String) {
         emit(AuthenticationState.unauthenticated(message: result));
       } else {
-        emit(AuthenticationState.unauthenticated(
-            message: 'Login failed, Please try again.'.tr()));
+        // temporary modification to enable pseudo login test
+        user = ListingsUser();
+        user?.favoriteBath = FavoriteBath.custom("Anything is fine");
+        user?.firstName = "Jean";
+        user?.lastName = "Xia";
+        user?.email = "oodestroy@gmail.com";
+        user?.userID = "123344";
+        emit(AuthenticationState.authenticated(user!));
+        //TODO remove the temp modification coding and restore the code for the following commend
+        // emit(AuthenticationState.unauthenticated(
+        //     message: 'Login failed, Please try again.'.tr()));
       }
     });
     on<LoginWithFacebookEvent>((event, emit) async {

@@ -227,6 +227,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           }),
                     ),
                     Padding(
+                      padding:
+                      const EdgeInsets.only(top: 16.0, right: 32, left: 32),
+                      child: BlocBuilder<ProfileBloc, ProfileState>(
+                          buildWhen: (old, current) =>
+                          current is UpdatedUserState && old != current,
+                          builder: (context, state) {
+                            return Text(
+                              currentUser.favoriteBath.toString(),
+                              style: TextStyle(
+                                  color: isDarkMode(context)
+                                      ? Colors.white
+                                      : Colors.black,
+                                  fontSize: 15),
+                              textAlign: TextAlign.center,
+                            );
+                          }),
+                    ),
+                    Padding(
                       padding: const EdgeInsets.only(top: 8),
                       child: Column(
                         children: [

@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:easy_localization/easy_localization.dart' as easy_local;
 import 'package:flutter/cupertino.dart';
@@ -15,6 +16,8 @@ import 'package:instaflutter/core/ui/loading/loading_cubit.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:instaflutter/constants.dart';
 
+import '../../../../core/common/favorite_bath.dart';
+
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
 
@@ -26,7 +29,7 @@ class _SignUpState extends State<SignUpScreen> {
   File? _image;
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _key = GlobalKey();
-  String? firstName, lastName, email, password, confirmPassword;
+  String? firstName, lastName, email, password, confirmPassword, favoriteBath; //favoriteBathroom
   AutovalidateMode _validate = AutovalidateMode.disabled;
   bool acceptEULA = true;
 
@@ -83,6 +86,7 @@ class _SignUpState extends State<SignUpScreen> {
                 },
               ),
             ],
+
             child: Scaffold(
               appBar: AppBar(
                 elevation: 0.0,
@@ -287,6 +291,19 @@ class _SignUpState extends State<SignUpScreen> {
                               ),
                             ),
                             Padding(
+                              padding: const EdgeInsets.only(top: 16.0, right: 8.0, left: 8.0),
+                              child: TextFormField(
+                                // the hint text to a random bathroom option.
+                                decoration: InputDecoration(
+                                  hintText: getRandomBathroomOption(), // a random bathroom option as hint.
+                                  labelText: 'What is your favorite bathroom you’ve used?', // Label for the field.
+                                ),
+                                onSaved: (String? val) {
+                                  favoriteBath = val;
+                                },
+                              ),
+                            ),
+                            Padding(
                               padding: const EdgeInsets.only(
                                   right: 40.0, left: 40.0, top: 40.0),
                               child: ElevatedButton(
@@ -447,5 +464,16 @@ class _SignUpState extends State<SignUpScreen> {
     _passwordController.dispose();
     _image = null;
     super.dispose();
+  }
+
+  // Function to get a random bathroom option.
+  String getRandomBathroomOption() {
+    final List<String> bathroomOptions = [
+      FavoriteBath.option1.toString(),
+      FavoriteBath.option2.toString(),
+      FavoriteBath.option3.toString(),
+    ];
+    final random = Random();
+    return bathroomOptions[random.nextInt(bathroomOptions.length)];
   }
 }
